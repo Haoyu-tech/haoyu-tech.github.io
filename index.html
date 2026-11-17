@@ -2,332 +2,228 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Haoyu Wang · Quant Research</title>
-<meta name="description" content="Haoyu Wang, PhD student in Financial Engineering at the University of Auckland. Quant research in market microstructure, cross-sectional asset pricing and portfolio optimization.">
-<meta property="og:title" content="Haoyu Wang · Quant Research">
-<meta property="og:description" content="PhD student in Financial Engineering, University of Auckland. Market making, factor research and portfolio optimization.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haoyu Wang</title>
+<meta name="description" content="Haoyu Wang, PhD student in Financial Engineering at the University of Auckland. Machine-learning asset pricing, factor research, portfolio optimisation and market microstructure.">
+<meta property="og:title" content="Haoyu Wang">
+<meta property="og:description" content="PhD student in Financial Engineering, University of Auckland.">
 <meta property="og:image" content="avatar.jpg">
 <link rel="icon" href="avatar.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400&display=swap">
 <style>
-/* Layout: 12-column bento grid of tiles — inverted identity tile anchors the top-left, the strategy lab spans full width, everything else is a tile sized to its weight */
 :root{
-  --bg:#edf0f4; --paper:#ffffff; --ink:#0d1726; --muted:#5f6b7d; --rule:#e1e6ed;
-  --accent:#0f7b8a; --accent-soft:#e1f2f4; --warm:#e08a1e; --pos:#15803d; --neg:#d1453b;
-  --heat0:#eef2f6; --heat1:#b9dfe4; --heat2:#0f7b8a;
-  --f-display:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --bg:#fbfaf6; --paper:#fbfaf6; --ink:#1f1e1b; --muted:#6b675f; --rule:#dcd8ce;
+  --link:#7a2e1f; --accent:#7a2e1f; --accent-soft:#f1e9e2; --warm:#a8701a;
+  --pos:#2f6b3a; --neg:#a3352b; --heat0:#ece8df; --heat1:#c9b9a6; --panel:#f4f1ea;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#080c12; --paper:#10161f; --ink:#e6edf5; --muted:#8e9aac; --rule:#1e2733;
-  --accent:#3cc7d6; --accent-soft:#0f2d33; --warm:#fbbf24; --pos:#34d399; --neg:#f87171;
-  --heat0:#141c27; --heat1:#1d4f58; --heat2:#3cc7d6; color-scheme:dark}}
+  --bg:#1a1917; --paper:#1a1917; --ink:#e8e4da; --muted:#a19c91; --rule:#3a3732;
+  --link:#e3a088; --accent:#e3a088; --accent-soft:#2c2420; --warm:#d9a85a;
+  --pos:#8cc79a; --neg:#e58a7f; --heat0:#2a2824; --heat1:#5b4e43; --panel:#211f1c; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#080c12; --paper:#10161f; --ink:#e6edf5; --muted:#8e9aac; --rule:#1e2733;
-  --accent:#3cc7d6; --accent-soft:#0f2d33; --warm:#fbbf24; --pos:#34d399; --neg:#f87171;
-  --heat0:#141c27; --heat1:#1d4f58; --heat2:#3cc7d6; color-scheme:dark}
+  --bg:#1a1917; --paper:#1a1917; --ink:#e8e4da; --muted:#a19c91; --rule:#3a3732;
+  --link:#e3a088; --accent:#e3a088; --accent-soft:#2c2420; --warm:#d9a85a;
+  --pos:#8cc79a; --neg:#e58a7f; --heat0:#2a2824; --heat1:#5b4e43; --panel:#211f1c; color-scheme:dark}
+
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6;font-feature-settings:"ss01"}
-a{color:var(--accent)}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
-.lbl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.btn{font-family:var(--f-body);font-weight:600;font-size:13px;text-decoration:none;padding:8px 14px;border:1px solid var(--rule);border-radius:999px;color:var(--ink);background:var(--paper);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
-.btn:hover{border-color:var(--accent);color:var(--accent)}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--serif)}
+a{color:var(--link);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.page{max-width:780px;margin:0 auto;padding:40px 20px 60px}
 
-.wrap{max-width:1280px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
-.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
-.t{background:var(--paper);border:1px solid var(--rule);border-radius:18px;padding:24px 26px;min-width:0}
-.t h2{font-weight:800;font-size:22px;letter-spacing:-.02em;margin:0;line-height:1.2}
-.th{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}
-.s3{grid-column:span 3}.s4{grid-column:span 4}.s5{grid-column:span 5}.s6{grid-column:span 6}.s7{grid-column:span 7}.s8{grid-column:span 8}.s12{grid-column:span 12}
+/* header */
+.mast{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--ink);padding-bottom:10px}
+.mast .name{font-size:19px;font-weight:600;color:var(--ink);text-decoration:none}
+.mast nav{display:flex;gap:18px;flex-wrap:wrap;font-size:15px}
+.mast nav a{color:var(--ink);text-decoration:none}
+.mast nav a:hover{text-decoration:underline}
+.mode{all:unset;cursor:pointer;font-size:15px;color:var(--muted)}
+.mode:hover{color:var(--ink)}
 
-/* header tile */
-.top{padding:28px 30px;display:grid;gap:26px}
-.top-grid{display:grid;grid-template-columns:160px minmax(0,0.9fr) minmax(0,1.2fr);gap:30px;align-items:center}
-.ava{width:160px;height:160px;object-fit:cover;object-position:center 35%;border-radius:20px;display:block;border:1px solid var(--rule)}
-.id h1{font-weight:800;font-size:44px;letter-spacing:-.04em;line-height:1;margin:8px 0 0}
-.role{margin:10px 0 0;font-size:15px;font-weight:600}
-.role span{display:block;font-weight:400;color:var(--muted);font-size:13.5px}
-.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.btn.pri{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.btn.pri:hover{opacity:.88;color:var(--paper)}
-.mailrow{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-top:12px}
-.mail{font-size:12.5px;user-select:all;color:var(--ink)}
-.copy{all:unset;cursor:pointer;font-family:var(--f-mono);font-size:11px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
-.copy:hover{color:var(--accent)}
-.stmt{border-left:1px solid var(--rule);padding-left:30px}
-.stmt p.big{font-weight:700;font-size:clamp(22px,2.2vw,30px);line-height:1.2;letter-spacing:-.025em;margin:0;text-wrap:balance}
-.stmt p.big em{font-style:normal;color:var(--accent)}
-.stmt p.sub{margin:12px 0 0;color:var(--muted);max-width:60ch}
-.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-.kpi{background:var(--bg);border-radius:12px;padding:12px 14px}
-.kpi .v{font-weight:800;font-size:28px;letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums}
-.kpi .d{font-size:12px;color:var(--muted);line-height:1.35;margin-top:2px}
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:36px;margin-top:40px}
+.about h1{font-size:34px;font-weight:600;line-height:1.15;margin:0 0 4px;letter-spacing:-.005em}
+.about .pos{margin:0 0 20px;color:var(--muted)}
+.about p{margin:0 0 14px}
+.about img{width:190px;height:230px;object-fit:cover;object-position:center 30%;display:block;filter:saturate(.9)}
+.contact{font-size:15px;line-height:1.75;margin-top:18px}
+.contact .mail{font-family:var(--mono);font-size:14px}
+.copy{all:unset;cursor:pointer;font-size:13px;color:var(--muted);margin-left:6px}
+.copy:hover{color:var(--ink);text-decoration:underline}
 
-/* jmp tile */
-.jmp h3{font-weight:800;font-size:clamp(20px,2vw,25px);letter-spacing:-.025em;line-height:1.2;margin:8px 0 6px;text-wrap:balance}
-.jmp .by{color:var(--muted);font-size:13.5px;margin:0 0 10px}
-.jmp p{margin:0 0 14px;max-width:70ch}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-family:var(--f-mono);font-size:11px;padding:3px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
-.chip.w{background:color-mix(in srgb,var(--warm) 16%,transparent);color:var(--warm)}
+/* sections */
+section{margin-top:52px}
+h2{font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:0 0 18px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
+h3{font-size:16px;font-weight:600;margin:28px 0 10px;color:var(--muted);font-style:italic}
 
-/* streams */
-.stream .no{font-weight:800;font-size:44px;letter-spacing:-.04em;line-height:1;color:var(--accent);opacity:.9}
-.stream h3{font-weight:800;font-size:17px;letter-spacing:-.015em;margin:10px 0 6px;line-height:1.25}
-.stream p{margin:0 0 10px;font-size:14px;color:var(--muted)}
-.stream ul{margin:0;padding-left:16px;font-size:13px;display:grid;gap:2px}
+/* papers */
+.papers{list-style:none;margin:0;padding:0}
+.papers li{margin:0 0 18px}
+.papers .ti{font-weight:600}
+.papers .meta{display:block;color:var(--muted);font-size:15.5px}
+.papers .meta i{color:var(--ink)}
 
-/* projects */
-.pc{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--ink);transition:transform .15s,border-color .15s}
-.pc:hover{transform:translateY(-2px);border-color:var(--accent)}
-.pc h3{font-weight:700;font-size:15.5px;letter-spacing:-.01em;line-height:1.3;margin:0}
-.pc p{margin:0;font-size:13px;color:var(--muted)}
-.pc .go{margin-top:auto;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
-.pc:hover .go{color:var(--accent)}
+/* plain dated lists */
+.dl{display:grid;grid-template-columns:150px minmax(0,1fr);column-gap:20px;row-gap:12px;margin:0}
+.dl dt{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:4px}
+.dl dd{margin:0}
+.dl dd small{display:block;color:var(--muted);font-size:15px}
 
-.pch{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
-.star{font-size:12px;color:var(--warm);white-space:nowrap}
-.ph-row{padding-block:18px}
-/* small lists */
-.ls{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-size:14px}
-.ls b{font-weight:700}
-.ls span{display:block;color:var(--muted);font-size:12.5px}
-.sub-h{margin:20px 0 10px}
-footer{grid-column:1/-1;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;color:var(--muted);padding:6px 6px 0}
+.plain{margin:0;padding-left:20px}
+.plain li{margin-bottom:8px}
+.plain li span{color:var(--muted)}
 
-/* ---- reused component styles ---- */
-/* gantt */
-.gantt-wrap{overflow-x:auto}
-#gantt{display:block;width:100%;min-width:640px;height:auto}
-#gantt text{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
-#gantt .lane{font-size:10.5px;letter-spacing:.1em}
-#gantt .barlbl{fill:var(--ink);font-family:var(--f-body);font-size:11.5px}
-#gantt .grid{stroke:var(--rule)}
-#gantt .now{stroke:var(--warm);stroke-dasharray:3 3}
-.key{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:var(--muted)}
-.key i{display:inline-block;width:12px;height:10px;border-radius:2px;vertical-align:-1px;margin-right:6px}
-
-
-/* holdings */
-.tbl-wrap{overflow-x:auto}
-table.hold{width:100%;border-collapse:collapse;min-width:620px}
-.hold th{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:400;text-align:left;padding:8px 10px;border-bottom:2px solid var(--ink)}
-.hold td{padding:12px 10px;border-bottom:1px solid var(--rule);vertical-align:top;font-size:14px}
-.hold td.n{font-family:var(--f-mono);color:var(--muted);white-space:nowrap}
-.hold td.t{font-weight:500;max-width:60ch}
-.hold td.t span{display:block;font-weight:400;color:var(--muted);font-style:italic;font-size:13px}
-.pill{font-family:var(--f-mono);font-size:10.5px;padding:2px 7px;border-radius:10px;white-space:nowrap;letter-spacing:.04em}
-.pill.p{background:color-mix(in srgb,var(--pos) 16%,transparent);color:var(--pos)}
-.pill.w{background:color-mix(in srgb,var(--warm) 16%,transparent);color:var(--warm)}
-.hold a{font-family:var(--f-mono);font-size:12px;text-decoration:none;white-space:nowrap}
-
-
-/* AS demo */
-.as{display:grid;grid-template-columns:minmax(0,1fr) 176px;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--bg)}
+/* demos */
+.lead{margin:0 0 18px;color:var(--muted);font-size:16px}
+.lbl{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--muted)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.tabs{display:flex;gap:22px;margin-bottom:14px;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.tabs button{all:unset;cursor:pointer;padding:6px 0;margin-bottom:-1px;font-size:16px;color:var(--muted);border-bottom:2px solid transparent}
+.tabs button .lbl{display:none}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.tabs button:hover{color:var(--ink)}
+.as{display:grid;grid-template-columns:minmax(0,1fr) 160px;border:1px solid var(--rule)}
+.as.solo{grid-template-columns:minmax(0,1fr)}
 .as-main{min-width:0;display:flex;flex-direction:column}
-.as-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 14px;border-bottom:1px solid var(--rule);background:var(--paper)}
+.as-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:8px 12px;border-bottom:1px solid var(--rule)}
 .as-ctl{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.as-ctl input{accent-color:var(--accent);width:130px}
+.as-ctl input{accent-color:var(--ink);width:120px}
 .as-ctl output{font-size:13px;min-width:34px}
-.as-ctl .btn{padding:5px 12px}
-#px{display:block;width:100%;height:280px}
-.as-key{display:flex;gap:16px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid var(--rule);font-size:12px;color:var(--muted);background:var(--paper)}
+.btn{all:unset;cursor:pointer;font-size:14px;padding:2px 10px;border:1px solid var(--rule)}
+.btn:hover{border-color:var(--ink)}
+#px,#mfc,#poc{display:block;width:100%;height:260px}
+.as-key{display:flex;gap:14px;flex-wrap:wrap;padding:6px 12px;border-top:1px solid var(--rule);font-size:13px;color:var(--muted)}
 .as-key i{display:inline-block;width:14px;height:2px;vertical-align:middle;margin-right:6px}
 .as-key i.dash{background:repeating-linear-gradient(90deg,var(--accent) 0 4px,transparent 4px 7px)}
 .as-key i.dot{width:7px;height:7px;border-radius:50%;background:var(--muted)}
-.as-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule);background:var(--paper)}
-.as-stats div{padding:10px 14px;border-right:1px solid var(--rule);display:grid;gap:2px}
+.as-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule)}
+.as-stats div{padding:8px 12px;border-right:1px solid var(--rule);display:grid;gap:1px}
 .as-stats div:last-child{border-right:0}
-.as-stats b{font-size:17px;font-weight:500}
-.as-book{border-left:1px solid var(--rule);background:var(--paper);font-family:var(--f-mono);font-size:11.5px;font-variant-numeric:tabular-nums;padding-block:8px}
-.lvl{display:grid;grid-template-columns:1fr 1fr;padding:1.5px 12px;position:relative}
-.lvl .bg{position:absolute;right:0;top:1px;bottom:1px;opacity:.14}
-.lvl.a .p{color:var(--neg)} .lvl.a .bg{background:var(--neg)}
-.lvl.b .p{color:var(--pos)} .lvl.b .bg{background:var(--pos)}
-.lvl .p,.lvl .q{position:relative}
-.lvl .q{text-align:right;color:var(--muted)}
-.bmid{display:flex;justify-content:space-between;padding:6px 12px;margin-block:4px;border-block:1px solid var(--rule);font-weight:500}
-.as-eq{font-size:12px;color:var(--muted);margin:12px 0 0;overflow-x:auto;white-space:nowrap}
-@media (max-width:720px){.as{grid-template-columns:minmax(0,1fr)}.as-book{display:none}.as-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.as-stats div:nth-child(2){border-right:0}.as-stats div:nth-child(-n+2){border-bottom:1px solid var(--rule)}#px{height:220px}}
-.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:12px}
-.tabs button{all:unset;cursor:pointer;display:grid;gap:2px;padding:10px 14px;border:1px solid var(--rule);border-radius:4px;background:var(--paper);font-size:15px;font-weight:500;color:var(--ink)}
-.tabs button .lbl{font-size:10.5px}
-.tabs button:hover{border-color:var(--accent)}
-.tabs button[aria-selected="true"]{border-color:var(--accent);box-shadow:inset 0 -3px 0 var(--accent)}
-.tabs button[aria-selected="true"] .lbl{color:var(--accent)}
-.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.as.solo{grid-template-columns:minmax(0,1fr)}
-#mfc,#poc{display:block;width:100%;height:300px}
-.wts{padding:10px 12px;display:grid;gap:10px;align-content:start}
+.as-stats b{font-size:15px;font-weight:400}
+.as-book{border-left:1px solid var(--rule);font-family:var(--mono);font-size:11px;font-variant-numeric:tabular-nums;padding-block:6px}
+.lvl{display:grid;grid-template-columns:1fr 1fr;padding:1px 10px;position:relative}
+.lvl .bg{position:absolute;right:0;top:1px;bottom:1px;opacity:.13}
+.lvl.a .p{color:var(--neg)}.lvl.a .bg{background:var(--neg)}
+.lvl.b .p{color:var(--pos)}.lvl.b .bg{background:var(--pos)}
+.lvl .p,.lvl .q{position:relative}.lvl .q{text-align:right;color:var(--muted)}
+.bmid{display:flex;justify-content:space-between;padding:4px 10px;margin-block:3px;border-block:1px solid var(--rule)}
+.wts{padding:10px;display:grid;gap:9px;align-content:start}
 .wrow{display:grid;gap:3px}
-.wrow .wl{display:flex;justify-content:space-between;font-size:11.5px}
+.wrow .wl{display:flex;justify-content:space-between;font-size:11px}
 .wrow .wl span:first-child{color:var(--muted)}
-.wbar{position:relative;height:8px;background:var(--heat0);border-radius:2px}
+.wbar{position:relative;height:7px;background:var(--heat0)}
 .wbar::before{content:"";position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--muted)}
-.wbar i{position:absolute;top:0;bottom:0;border-radius:2px}
-@media (max-width:720px){.tabs{grid-template-columns:minmax(0,1fr)}#mfc,#poc{height:240px}.wts{display:none}}
-.xp{display:grid}
-.xr{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;padding-block:14px;border-bottom:1px dotted var(--rule)}
-.xr:last-child{border-bottom:0}
-.xw{font-size:12px;color:var(--muted);padding-top:3px}
-.xr h4{margin:0;font-size:15.5px;font-weight:600}
-.xr h4 em{font-style:normal;font-weight:400;color:var(--muted)}
-.xo{font-size:13.5px;color:var(--accent)}
-.xr p{margin:6px 0 0;font-size:14px;color:var(--muted);max-width:72ch}
-@media (max-width:560px){.xr{grid-template-columns:minmax(0,1fr);gap:2px}}
+.wbar i{position:absolute;top:0;bottom:0}
+.as-eq{font-family:var(--mono);font-size:12px;color:var(--muted);margin:8px 0 0;overflow-x:auto;white-space:nowrap}
 
-.as{border-radius:12px;background:var(--bg)}
-.as-top,.as-key,.as-stats,.as-book{background:var(--paper)}
-.tabs button{border-radius:12px;font-family:var(--f-body);font-weight:700;letter-spacing:-.01em}
-.hold th{border-bottom:1px solid var(--rule)}
-.hold td.t{font-weight:600}
-.xr h4{font-weight:700}
-#gantt .barlbl{font-family:var(--f-body);font-weight:600}
+footer{margin-top:64px;padding-top:10px;border-top:1px solid var(--rule);font-size:14px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
-@media (max-width:1080px){
-  .s3{grid-column:span 6}.s4,.s5,.s7,.s8{grid-column:span 12}.s6{grid-column:span 12}
-  .top-grid{grid-template-columns:132px minmax(0,1fr);gap:22px}
-  .ava{width:132px;height:132px}
-  .stmt{grid-column:1/-1;border-left:0;padding-left:0;border-top:1px solid var(--rule);padding-top:20px}
-  .kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
 @media (max-width:640px){
-  .s3{grid-column:span 12}
-  .t{padding:20px 18px;border-radius:14px}
-  .top{padding:20px 18px}
-  .top-grid{grid-template-columns:84px minmax(0,1fr);gap:16px;align-items:start}
-  .ava{width:84px;height:84px;border-radius:14px}
-  .id h1{font-size:32px}
-  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  body{font-size:16.5px}
+  .page{padding:24px 16px 48px}
+  .about{grid-template-columns:minmax(0,1fr);gap:20px;margin-top:28px}
+  .about figure{order:-1;margin:0}
+  .about img{width:120px;height:146px}
+  .about h1{font-size:29px}
+  .dl{grid-template-columns:minmax(0,1fr);row-gap:2px}
+  .dl dd{margin-bottom:12px}
+  .as{grid-template-columns:minmax(0,1fr)}.as-book{display:none}
+  .as-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .as-stats div:nth-child(2){border-right:0}.as-stats div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  #px,#mfc,#poc{height:220px}
 }
-@media (prefers-reduced-motion:reduce){.pc{transition:none}.pc:hover{transform:none}}
+@media print{.mast nav,.mode,.copy,#demos{display:none}}
 </style>
-<style id="editorial-refresh">
-/* Editorial refinement: quieter surfaces, a clear hierarchy and cohesive cards. */
-:root{--bg:#f3f5f7;--paper:#fff;--ink:#15243a;--muted:#62738a;--rule:#e3e9ef;--accent:#127c83;--accent-soft:#eaf5f4;--shadow:0 4px 22px rgba(21,36,58,.035);--panel:#f7f9fb;--warm:#a96a18}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c121b;--paper:#151e2b;--ink:#edf3fa;--muted:#9aabc0;--rule:#283548;--accent:#6dd2cb;--accent-soft:#1b343c;--shadow:0 8px 28px rgba(0,0,0,.13);--panel:#1a2534;--warm:#e4b574}}
-:root[data-theme="dark"]{--bg:#0c121b;--paper:#151e2b;--ink:#edf3fa;--muted:#9aabc0;--rule:#283548;--accent:#6dd2cb;--accent-soft:#1b343c;--shadow:0 8px 28px rgba(0,0,0,.13);--panel:#1a2534;--warm:#e4b574}
-html{scroll-behavior:smooth;scroll-padding-top:32px}
-body{line-height:1.7;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1260px;padding-block:24px 48px;padding-inline:max(24px,env(safe-area-inset-left))}
-.site-nav{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 4px 22px}
-.site-brand{color:var(--ink);text-decoration:none;font-size:14px;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:10px;white-space:nowrap}
-.brand-mark{display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--rule);border-radius:10px;color:var(--accent);background:var(--paper);font-family:var(--f-mono);font-size:11px;font-weight:600}
-.nav-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-.nav-links a,.theme-toggle{padding:7px 11px;font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;border-radius:8px;border:0;background:none;font-family:inherit;cursor:pointer}
-.nav-links a:hover,.theme-toggle:hover{color:var(--ink);background:var(--accent-soft)}
-.theme-toggle{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--rule);margin-left:8px;background:var(--paper)}
-.theme-toggle svg{width:14px;height:14px}
-.bento{gap:18px}
-.bento>.t{border-radius:20px;box-shadow:var(--shadow);padding:28px}
-.bento>.top{padding:36px;gap:30px;border-color:color-mix(in srgb,var(--accent) 13%,var(--rule))}
-.top-grid{grid-template-columns:144px minmax(0,.95fr) minmax(0,1.1fr);gap:28px}
-.ava{width:144px;height:164px;border-radius:18px;box-shadow:0 8px 20px rgba(0,0,0,.07)}
-.id .lbl{font-size:9.5px;letter-spacing:.09em}
-.id h1{font-size:clamp(35px,3.5vw,47px);line-height:1.08;margin-top:10px;letter-spacing:-.045em}
-.role{font-size:14px;line-height:1.5;margin-top:12px}
-.role span{font-size:12px;line-height:1.7;margin-top:3px}
-.stmt{padding-left:28px}
-.stmt p.big{font-size:clamp(22px,2.25vw,29px);font-weight:600;line-height:1.35;letter-spacing:-.03em}
-.stmt p.sub{font-size:13px;line-height:1.8;margin-top:13px}
-.btn{border-radius:9px;padding:9px 13px;font-size:12px;transition:background .15s,border-color .15s}
-.links{gap:7px;margin-top:18px}
-.mailrow{margin-top:14px;gap:12px}
-.mail{font-size:11px}.copy{font-size:10px}
-.kpis{gap:0;background:var(--panel);border:1px solid var(--rule);border-radius:15px;overflow:hidden}
-.kpi{position:relative;border-radius:0;background:none;padding:22px 21px;display:grid;align-content:start;gap:9px;min-height:126px;text-decoration:none;color:var(--ink);transition:background .15s}
-.kpi+.kpi{border-left:1px solid var(--rule)}
-.kpi:hover{background:var(--accent-soft)}
-.kpi-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.kpi .v{font-size:36px;font-weight:700;letter-spacing:-.045em;line-height:1.15;color:var(--ink)}
-.kpi-icon{width:28px;height:28px;display:grid;place-items:center;border:1px solid var(--rule);border-radius:8px;background:var(--paper);color:var(--accent);flex-shrink:0}
-.kpi-icon svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.kpi .d{margin:0;font-size:11.5px;line-height:1.6;letter-spacing:0;color:var(--muted)}
-.kpi-event .v{font-size:27px;letter-spacing:-.04em;color:var(--warm)}
-.kpi-event .kpi-icon{color:var(--warm)}
-.kpi .d span{display:block;color:var(--muted);font-size:10px}
-.th{margin-bottom:20px;gap:10px}.t h2{font-size:22px;letter-spacing:-.025em;font-weight:700}
-.lbl{font-size:10px;letter-spacing:.09em}
-.tabs{gap:10px;margin-bottom:16px}.tabs button{padding:13px 16px;border-radius:11px;font-size:14px;line-height:1.6;background:var(--panel)}
-.tabs button[aria-selected="true"]{background:var(--accent-soft);box-shadow:none}
-.as{border-radius:12px}.as-top,.as-key{padding:12px 16px}.as-key{font-size:11px;gap:14px}
-.stream .no{font-family:var(--f-mono);font-size:28px;font-weight:500;opacity:1;color:var(--accent)}
-.stream h3{font-size:17px;margin-top:16px}.stream p{font-size:13px;line-height:1.8}.stream ul{font-size:12px;gap:5px;padding-left:17px}
-.pc{gap:13px;min-height:205px}.pc:hover{box-shadow:0 10px 28px rgba(0,0,0,.075);transform:translateY(-3px)}
-.pc h3{font-size:16px;font-weight:700;line-height:1.5}.pc p{font-size:12.5px;line-height:1.8}.pc .go{padding-top:10px;font-size:10px}
-.chip{font-size:9px;padding:4px 8px;border-radius:6px;letter-spacing:.015em}
-.bento>.ph-row{background:none;border:none;box-shadow:none;padding:12px 3px 2px}
-.hold td.t{background:none;border:none;border-bottom:1px solid var(--rule);border-radius:0;box-shadow:none;line-height:1.7;font-size:13px}
-.hold td{padding:18px 10px;font-size:13px}.hold td.t span{font-size:11.5px;margin-top:4px}
-.xr{padding-block:17px;border-bottom-style:solid}.xr h4{font-size:14px}.xr p{font-size:12.5px;line-height:1.8}.xo{font-size:12.5px;margin-top:3px}
-footer{padding:14px 3px;font-size:10px;border-top:1px solid var(--rule);margin-top:8px}
-@media(max-width:1080px){.top-grid{grid-template-columns:132px minmax(0,1fr)}.ava{width:132px;height:146px}.stmt{padding-left:0;padding-top:22px}.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.kpi:nth-child(4){border-left:0}.kpi:nth-child(n+4){border-top:1px solid var(--rule)}.kpi-event{grid-column:span 2}.kpi{min-height:116px}}
-@media(max-width:640px){.wrap{padding-inline:14px;padding-block:14px 30px}.site-nav{align-items:flex-start;gap:10px;margin-bottom:16px}.site-brand{font-size:12px}.nav-links{gap:1px;max-width:220px}.nav-links a{font-size:10px;padding:5px 7px}.theme-toggle{margin-left:0;padding:5px 7px;font-size:10px}.bento{gap:12px}.bento>.t{padding:22px 19px;border-radius:16px}.bento>.top{padding:24px 20px;gap:24px}.top-grid{grid-template-columns:72px minmax(0,1fr);gap:15px}.ava{width:72px;height:90px;border-radius:12px}.id h1{font-size:29px}.id .lbl{font-size:8px;letter-spacing:.045em}.role{font-size:12px;margin-top:10px}.role span{font-size:10.5px}.links{margin-left:-87px;padding-top:10px}.mailrow{margin-left:-87px}.stmt p.big{font-size:23px}.stmt p.sub{font-size:12px}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi{padding:18px 14px;min-height:110px}.kpi .v{font-size:30px}.kpi .d{font-size:10.5px}.kpi:nth-child(odd){border-left:0}.kpi:nth-child(even){border-left:1px solid var(--rule)}.kpi:nth-child(n+3){border-top:1px solid var(--rule)}.kpi-event{grid-column:1/-1;min-height:90px}.kpi-event .v{font-size:25px}.kpi-event .d span{display:inline;margin-left:5px}.tabs button{padding:11px 13px}.th .lbl{font-size:9px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.pc,.btn,.kpi{transition:none}.pc:hover{transform:none}}
-
-</style>
-<link rel="stylesheet" href="tech-theme.css?v=20261017c">
-<link rel="stylesheet" href="polish.css?v=20261118">
 </head>
 <body>
-<canvas id="tech-background" aria-hidden="true"></canvas>
-<div class="wrap">
-<nav class="site-nav" aria-label="Main navigation">
-  <a class="site-brand" href="#profile"><span class="brand-mark" aria-hidden="true">HW</span>Haoyu Wang</a>
-  <div class="nav-links"><a href="#research">Research</a><a href="#papers">Papers</a><a href="#projects">Projects</a><a href="#experience">Career</a>
-    <button class="motion-toggle" id="motion-toggle" type="button">Motion on</button>
-<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"/></svg><span>Theme</span></button>
-  </div>
-</nav>
-<div class="bento">
+<div class="page">
 
-  <section class="t top s12" id="profile" aria-label="Profile">
-    <div class="top-grid">
-      <img class="ava" src="avatar.jpg" alt="Portrait of Haoyu Wang" width="160" height="160">
-      <div class="id">
-        <span class="lbl">Quant research · Auckland, New Zealand</span>
-        <h1>Haoyu Wang</h1>
-        <p class="role">PhD Student in Financial Engineering<span>University of Auckland · Dept. of Accounting and Finance</span></p>
-        <div class="links">
-          <a class="btn pri" href="cv.html" target="_blank" rel="noopener">CV</a>
-          <a class="btn" href="https://github.com/Haoyu-tech" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/haoyu-wang-05a224350" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-        <div class="mailrow"><a class="mail mono" id="mail" href="mailto:haoyu.wang@auckland.ac.nz">haoyu.wang@auckland.ac.nz</a><button class="copy" id="copy" type="button">Copy email</button></div>
-      </div>
-      <div class="stmt">
-        <p class="big">I turn financial data into <em>trading signals</em> and <em>portfolio strategies</em>.</p>
-        <p class="sub hero-work">I’ve built LLM-powered factor research tools, market-making models and portfolio backtesting systems across equities and crypto.</p>
-        <figure class="hero-quote"><blockquote>“Price is what you pay; value is what you get.”</blockquote><figcaption>— Benjamin Graham<br><a href="https://www.berkshirehathaway.com/2008ar/2008ar.pdf" target="_blank" rel="noopener" aria-label="Quote source: Berkshire Hathaway 2008 annual report">Quoted in Buffett’s 2008 letter ↗</a></figcaption></figure>
-      </div>
+<header class="mast">
+  <a class="name" href="./">Haoyu Wang</a>
+  <nav aria-label="Sections">
+    <a href="#research">Research</a>
+    <a href="#code">Code</a>
+    <a href="#experience">Experience</a>
+    <a href="cv.html">CV</a>
+    <button class="mode" id="theme-toggle" type="button">Dark</button>
+  </nav>
+</header>
+
+<main>
+<div class="about">
+  <div>
+    <h1>Haoyu Wang</h1>
+    <p class="pos">PhD student in Financial Engineering<br>Department of Accounting and Finance, University of Auckland</p>
+    <p>I work on empirical asset pricing and quantitative trading. Most of my research asks what machine-learning models actually pick up in the cross-section of stock returns, and when adding more firm characteristics stops helping. I also work on market making and inventory control with limit order book data, and on portfolio choice with reinforcement learning.</p>
+    <p>Before Auckland I did an MSc in Financial Mathematics at Xi'an Jiaotong-Liverpool University and a BSc in Finance at Chongqing Finance and Economics University. Along the way I have worked at S&amp;P Global, Kaiyuan Securities and Volvo Group, and as a research assistant at CUHK (Shenzhen) and XJTLU.</p>
+    <div class="contact">
+      Email: <a class="mail" id="mail" href="mailto:haoyu.wang@auckland.ac.nz">haoyu.wang@auckland.ac.nz</a><button class="copy" id="copy" type="button">copy</button><br>
+      <a href="cv.html">CV</a> (<a href="Haoyu-Wang-CV.pdf">PDF</a>) &middot; <a href="https://github.com/Haoyu-tech">GitHub</a> &middot; <a href="https://www.linkedin.com/in/haoyu-wang-05a224350">LinkedIn</a> &middot; <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5276183">SSRN</a>
     </div>
-    <div class="kpis" aria-label="Research at a glance">
-<a class="kpi" href="#papers"><div class="kpi-top"><div class="v">5</div><span class="kpi-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 4h7a3 3 0 0 1 3 3v13a4 4 0 0 0-3-2H3Z"/><path d="M13 7a3 3 0 0 1 3-3h5v14h-5a4 4 0 0 0-3 2"/></svg></span></div><div class="d">Journal articles</div></a>
-<a class="kpi" href="#papers"><div class="kpi-top"><div class="v">2</div><span class="kpi-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6Z"/><path d="M14 3v5h5M9 12h7M9 16h5"/></svg></span></div><div class="d">Working papers</div></a>
-<a class="kpi" href="#experience"><div class="kpi-top"><div class="v">9</div><span class="kpi-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6M18 15a4 4 0 0 1 3 4v2"/></svg></span></div><div class="d">Research &amp; industry roles</div></a>
-<a class="kpi" href="https://github.com/Haoyu-tech?tab=repositories" target="_blank" rel="noopener"><div class="kpi-top"><div class="v">12</div><span class="kpi-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 20"/></svg></span></div><div class="d">Public GitHub repos</div></a>
+  </div>
+  <figure><img src="avatar.jpg" alt="Haoyu Wang" width="190" height="230"></figure>
 </div>
+
+<section id="research">
+  <h2>Research</h2>
+
+  <h3>Working papers</h3>
+  <ul class="papers">
+    <li><span class="ti">Too Much of a Good Thing: Characteristic Redundancy and Machine-Learning Portfolio Performance</span>
+      <span class="meta">with D. Jayasuriya, L. Xiao and X. Han. To be presented at the 39th Australasian Finance and Banking Conference (AFBC), UNSW Sydney, December 2026.</span></li>
+    <li><a class="ti" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5276183">Entropy-Regularized Portfolio Optimization with Reinforcement Learning Control</a>
+      <span class="meta">2025. SSRN working paper 5276183.</span></li>
+  </ul>
+
+  <h3>Publications</h3>
+  <ul class="papers">
+    <li><a class="ti" href="https://doi.org/10.1016/j.frl.2026.110955">Machine learning predictive uncertainty and stock returns: Evidence from LightGBM entropy in the U.S. market</a>
+      <span class="meta">with Dejun Xie, Wenze Xiong and Jiale Zhang. <i>Finance Research Letters</i>, 2026, 110955.</span></li>
+    <li><a class="ti" href="https://doi.org/10.1186/s40854-026-00929-6">Optimizing Stock Market Prediction and Stock Trading Strategies with Deep Learning Models Enhanced by Nonlinear Feature Identification and Robust Prediction Evaluation</a>
+      <span class="meta"><i>Financial Innovation</i>, 2026, 12, 117.</span></li>
+    <li><a class="ti" href="https://doi.org/10.1016/j.ipm.2026.104855">Information-aware Valuation and Dynamic Pricing for Textual Data in Mobile Environments</a>
+      <span class="meta"><i>Information Processing and Management</i>, 2026, 63(7), 104855.</span></li>
+    <li><a class="ti" href="https://doi.org/10.1080/14765284.2026.2722767">Can Ensemble Learning Reveal Real Estate Value &ndash; A Study of England and Wales Cases Anonymous</a>
+      <span class="meta">with Yinze Ji and Yishuang Xu. <i>Journal of Chinese Economic and Business Studies</i>, 2026, 1&ndash;36.</span></li>
+    <li><span class="ti">Optimal Profit-Making Strategies in Stock Market with Algorithmic Trading</span>
+      <span class="meta"><i>Quantitative Finance and Economics</i>, 2024, 8(3), 546.</span></li>
+  </ul>
 </section>
 
-  <section class="t s12" id="lab">
-    <div class="th"><h2>Strategy lab</h2><span class="lbl">Interactive · simulated data</span></div>
-    <div class="tabs" role="tablist" aria-label="Strategy demos">
-      <button role="tab" id="tab-hf" aria-controls="tp-hf" aria-selected="true" type="button"><span class="lbl">High frequency</span>Market making</button>
-      <button role="tab" id="tab-mf" aria-controls="tp-mf" aria-selected="false" type="button"><span class="lbl">Mid / low frequency</span>Cross-sectional factor</button>
-      <button role="tab" id="tab-po" aria-controls="tp-po" aria-selected="false" type="button"><span class="lbl">Allocation</span>Portfolio optimization</button>
-    </div>
-    <div class="tabpane" id="tp-hf" role="tabpanel" aria-labelledby="tab-hf">
+<section id="code">
+  <h2>Code</h2>
+  <p class="lead">Research code I've made public. Everything else is on <a href="https://github.com/Haoyu-tech?tab=repositories">GitHub</a>.</p>
+  <ul class="plain">
+    <li><a href="https://github.com/Haoyu-tech/FactorForge-LLM-Factor-generation">FactorForge</a> <span>&middot; LLM-guided factor research on US equities, China A-shares and crypto perpetuals: from an economic idea to a factor expression, diagnostics and out-of-sample portfolios.</span></li>
+    <li><a href="https://github.com/Haoyu-tech/An-Avellaneda-Stoikov-market-making-research-project-built-on-real-Binance-Futures-BTCUSDT-L2-data.">Avellaneda&ndash;Stoikov market making on BTCUSDT</a> <span>&middot; built on real Binance Futures level-2 order book data.</span></li>
+    <li><a href="https://github.com/Haoyu-tech/Hybrid-Reinforcement-Learning-with-an-Avellaneda--Stoikov-Backbone">Hybrid RL with an Avellaneda&ndash;Stoikov backbone</a> <span>&middot; RL quoting on top of AS under non-stationary order flow.</span></li>
+    <li><a href="https://github.com/Haoyu-tech/lob-replay">lob-replay</a> <span>&middot; replay tools for BTC level-3 order book data.</span></li>
+    <li><a href="https://github.com/Haoyu-tech/astock-alpha-factor-lab">A-share alpha factor lab</a> <span>&middot; Alpha158 and GTJA-191 factors with walk-forward LightGBM stock selection on Tushare data.</span></li>
+    <li><a href="https://github.com/Haoyu-tech/Momentum-is-all-you-need">Momentum is all you need</a> <span>&middot; momentum on S&amp;P 500 stocks.</span></li>
+  </ul>
+</section>
+
+<section id="demos">
+  <h2>Three small simulations</h2>
+  <p class="lead">Toy versions of the models behind my work, running on simulated data in your browser.</p>
+  <div class="tabs" role="tablist" aria-label="Simulations">
+    <button role="tab" id="tab-hf" aria-controls="tp-hf" aria-selected="true" type="button"><span class="lbl">HF</span>Market making</button>
+    <button role="tab" id="tab-mf" aria-controls="tp-mf" aria-selected="false" type="button"><span class="lbl">MF</span>Factor sort</button>
+    <button role="tab" id="tab-po" aria-controls="tp-po" aria-selected="false" type="button"><span class="lbl">PO</span>Mean&ndash;variance</button>
+  </div>
+
+  <div class="tabpane" id="tp-hf" role="tabpanel" aria-labelledby="tab-hf">
     <div class="as">
       <div class="as-main">
         <div class="as-top">
-          <span class="lbl">BTCUSDT-PERP · simulated</span>
+          <span class="lbl">BTCUSDT-PERP (simulated)</span>
           <div class="as-ctl">
-            <label for="gam" class="lbl">Risk aversion γ</label>
+            <label for="gam" class="lbl">risk aversion &gamma;</label>
             <input type="range" id="gam" min="0.02" max="0.4" step="0.01" value="0.10">
             <output id="gamv" class="mono">0.10</output>
             <button class="btn" id="pause" type="button">Pause</button>
@@ -335,216 +231,132 @@ footer{padding:14px 3px;font-size:10px;border-top:1px solid var(--rule);margin-t
         </div>
         <canvas id="px" aria-label="Simulated mid price with reservation price and bid and ask quotes"></canvas>
         <div class="as-key">
-          <span><i style="background:var(--ink)"></i>Mid price</span>
-          <span><i class="dash"></i>Reservation price r(t)</span>
-          <span><i style="background:var(--pos)"></i>Bid quote</span>
-          <span><i style="background:var(--neg)"></i>Ask quote</span>
-          <span><i class="dot"></i>Fill</span>
+          <span><i style="background:var(--ink)"></i>mid</span>
+          <span><i class="dash"></i>reservation price</span>
+          <span><i style="background:var(--pos)"></i>bid</span>
+          <span><i style="background:var(--neg)"></i>ask</span>
+          <span><i class="dot"></i>fill</span>
         </div>
         <div class="as-stats">
-          <div><span class="lbl">Inventory q</span><b class="mono" id="sq">0</b></div>
-          <div><span class="lbl">Optimal spread δ</span><b class="mono" id="ss">0.00</b></div>
-          <div><span class="lbl">Fills</span><b class="mono" id="sf">0</b></div>
-          <div><span class="lbl">Mark-to-market PnL</span><b class="mono" id="sp">0.00</b></div>
+          <div><span class="lbl">inventory</span><b class="mono" id="sq">0</b></div>
+          <div><span class="lbl">spread &delta;</span><b class="mono" id="ss">0.00</b></div>
+          <div><span class="lbl">fills</span><b class="mono" id="sf">0</b></div>
+          <div><span class="lbl">MtM PnL</span><b class="mono" id="sp">0.00</b></div>
         </div>
       </div>
       <div class="as-book" id="book" aria-label="Simulated order book"></div>
     </div>
-    <p class="as-eq mono">Avellaneda–Stoikov (2008) · r = s − q·γ·σ²·(T−t) &nbsp;·&nbsp; δ = γ·σ²·(T−t) + (2/γ)·ln(1 + γ/k) &nbsp;·&nbsp; σ = 2.0, k = 1.5</p>
-    </div>
+    <p class="as-eq">Avellaneda &amp; Stoikov (2008): r = s &minus; q&gamma;&sigma;&sup2;(T&minus;t), &delta; = &gamma;&sigma;&sup2;(T&minus;t) + (2/&gamma;) ln(1 + &gamma;/k), with &sigma; = 2.0, k = 1.5</p>
+  </div>
 
-    <div class="tabpane" id="tp-mf" role="tabpanel" aria-labelledby="tab-mf" hidden>
-      <div class="as solo">
-        <div class="as-main">
-          <div class="as-top">
-            <span class="lbl">Monthly quintile sort · 20 years · simulated</span>
-            <div class="as-ctl">
-              <label for="ic" class="lbl">Signal IC</label>
-              <input type="range" id="ic" min="0" max="0.10" step="0.005" value="0.04">
-              <output id="icv" class="mono">0.040</output>
-              <button class="btn" id="resim" type="button">New sample</button>
-            </div>
-          </div>
-          <canvas id="mfc" aria-label="Cumulative returns of five quintile portfolios and the long-short spread"></canvas>
-          <div class="as-key" id="mfkey"></div>
-          <div class="as-stats">
-            <div><span class="lbl">L/S ann. return</span><b class="mono" id="m1">—</b></div>
-            <div><span class="lbl">L/S Sharpe</span><b class="mono" id="m2">—</b></div>
-            <div><span class="lbl">L/S max drawdown</span><b class="mono" id="m3">—</b></div>
-            <div><span class="lbl">Q5 − Q1 monotone</span><b class="mono" id="m4">—</b></div>
+  <div class="tabpane" id="tp-mf" role="tabpanel" aria-labelledby="tab-mf" hidden>
+    <div class="as solo">
+      <div class="as-main">
+        <div class="as-top">
+          <span class="lbl">monthly quintile sort, 20 years (simulated)</span>
+          <div class="as-ctl">
+            <label for="ic" class="lbl">signal IC</label>
+            <input type="range" id="ic" min="0" max="0.10" step="0.005" value="0.04">
+            <output id="icv" class="mono">0.040</output>
+            <button class="btn" id="resim" type="button">Redraw</button>
           </div>
         </div>
+        <canvas id="mfc" aria-label="Cumulative returns of five quintile portfolios and the long-short spread"></canvas>
+        <div class="as-key" id="mfkey"></div>
+        <div class="as-stats">
+          <div><span class="lbl">L/S ann. return</span><b class="mono" id="m1">&ndash;</b></div>
+          <div><span class="lbl">L/S Sharpe</span><b class="mono" id="m2">&ndash;</b></div>
+          <div><span class="lbl">L/S max DD</span><b class="mono" id="m3">&ndash;</b></div>
+          <div><span class="lbl">monotone</span><b class="mono" id="m4">&ndash;</b></div>
+        </div>
       </div>
-      <p class="as-eq mono">Sort stocks each month on a signal into quintiles · Q1 = lowest score, Q5 = highest · long Q5, short Q1 · rebalance monthly</p>
     </div>
+    <p class="as-eq">Sort on the signal each month, long Q5, short Q1, rebalance monthly.</p>
+  </div>
 
-    <div class="tabpane" id="tp-po" role="tabpanel" aria-labelledby="tab-po" hidden>
-      <div class="as">
-        <div class="as-main">
-          <div class="as-top">
-            <span class="lbl">Six assets · mean–variance · illustrative inputs</span>
-            <div class="as-ctl">
-              <label for="lam" class="lbl">Risk aversion λ</label>
-              <input type="range" id="lam" min="1" max="20" step="0.5" value="5">
-              <output id="lamv" class="mono">5.0</output>
-            </div>
-          </div>
-          <canvas id="poc" aria-label="Efficient frontier, random portfolios, minimum-variance, tangency and chosen portfolio"></canvas>
-          <div class="as-key">
-            <span><i class="dot" style="background:var(--heat1)"></i>Random long-only portfolios</span>
-            <span><i style="background:var(--accent)"></i>Efficient frontier</span>
-            <span><i class="dash"></i>Capital market line</span>
-            <span><i class="dot" style="background:var(--ink)"></i>GMV</span>
-            <span><i class="dot" style="background:var(--pos)"></i>Max Sharpe</span>
-            <span><i class="dot" style="background:var(--warm)"></i>Chosen λ</span>
-          </div>
-          <div class="as-stats">
-            <div><span class="lbl">Expected return</span><b class="mono" id="p1">—</b></div>
-            <div><span class="lbl">Volatility</span><b class="mono" id="p2">—</b></div>
-            <div><span class="lbl">Sharpe (rf 2%)</span><b class="mono" id="p3">—</b></div>
-            <div><span class="lbl">Gross leverage</span><b class="mono" id="p4">—</b></div>
+  <div class="tabpane" id="tp-po" role="tabpanel" aria-labelledby="tab-po" hidden>
+    <div class="as">
+      <div class="as-main">
+        <div class="as-top">
+          <span class="lbl">six assets, illustrative inputs</span>
+          <div class="as-ctl">
+            <label for="lam" class="lbl">risk aversion &lambda;</label>
+            <input type="range" id="lam" min="1" max="20" step="0.5" value="5">
+            <output id="lamv" class="mono">5.0</output>
           </div>
         </div>
-        <div class="as-book wts" id="wts" aria-label="Portfolio weights"></div>
+        <canvas id="poc" aria-label="Efficient frontier, random portfolios, minimum-variance, tangency and chosen portfolio"></canvas>
+        <div class="as-key">
+          <span><i class="dot" style="background:var(--heat1)"></i>random long-only</span>
+          <span><i style="background:var(--accent)"></i>frontier</span>
+          <span><i class="dash"></i>CML</span>
+          <span><i class="dot" style="background:var(--ink)"></i>GMV</span>
+          <span><i class="dot" style="background:var(--pos)"></i>max Sharpe</span>
+          <span><i class="dot" style="background:var(--warm)"></i>chosen &lambda;</span>
+        </div>
+        <div class="as-stats">
+          <div><span class="lbl">exp. return</span><b class="mono" id="p1">&ndash;</b></div>
+          <div><span class="lbl">volatility</span><b class="mono" id="p2">&ndash;</b></div>
+          <div><span class="lbl">Sharpe (rf 2%)</span><b class="mono" id="p3">&ndash;</b></div>
+          <div><span class="lbl">gross lev.</span><b class="mono" id="p4">&ndash;</b></div>
+        </div>
       </div>
-      <p class="as-eq mono">max<sub>w</sub> w′μ − (λ/2)·w′Σw &nbsp;s.t.&nbsp; 1′w = 1 &nbsp;⇒&nbsp; w = Σ⁻¹1/(1′Σ⁻¹1) + (1/λ)·[Σ⁻¹μ − (1′Σ⁻¹μ / 1′Σ⁻¹1)·Σ⁻¹1]</p>
+      <div class="as-book wts" id="wts" aria-label="Portfolio weights"></div>
     </div>
-  </section>
+    <p class="as-eq">max w&prime;&mu; &minus; (&lambda;/2) w&prime;&Sigma;w subject to 1&prime;w = 1</p>
+  </div>
+</section>
 
-  <section class="t stream s4" id="research"><div class="no">01</div><h3>Factor zoo &amp; ML asset pricing</h3><p>When do more characteristics stop helping, and what do ML portfolios learn from the cross-section?</p><ul><li>Characteristic redundancy (working paper)</li><li>GKX (2020 RFS) replication</li><li>GNN and LLM factor discovery</li></ul></section>
-  <section class="t stream s4"><div class="no">02</div><h3>Microstructure &amp; stochastic control</h3><p>Optimal quoting and inventory control under non-stationary order flow, on real L2 and L3 data.</p><ul><li>Hybrid RL + Avellaneda–Stoikov</li><li>AS market making on BTCUSDT L2</li><li>Algorithmic trading, QFE 2024</li></ul></section>
-  <section class="t stream s4"><div class="no">03</div><h3>Mid/low-frequency strategies &amp; allocation</h3><p>Cross-sectional multi-factor strategies and portfolio construction, from mean–variance to RL control.</p><ul><li>Entropy-regularized portfolio RL</li><li>US size-factor strategy</li><li>DL trading, Financial Innovation 2026</li></ul></section>
+<section id="experience">
+  <h2>Experience</h2>
+  <dl class="dl">
+    <dt>Dec 2024 &ndash; now</dt><dd>Financial Researcher, University of Auckland<small>Factor research, LLM-assisted research tooling, RL for market microstructure.</small></dd>
+    <dt>Jul 2025 &ndash; now</dt><dd>Graduate Teaching Assistant (Fintech), University of Auckland</dd>
+    <dt>Oct &ndash; Dec 2025</dt><dd>Finance Analyst (contract), Oxford Finance Limited, Auckland</dd>
+    <dt>Jan &ndash; Dec 2024</dt><dd>Research Assistant, Shenzhen Research Institute, CUHK</dd>
+    <dt>Mar &ndash; May 2024</dt><dd>Actuarial Intern, Guohua Life Insurance<small>Asset-liability management.</small></dd>
+    <dt>Oct 2023 &ndash; Feb 2024</dt><dd>Quantitative Research Intern, S&amp;P Global (IHS Automotive), Shanghai<small>ML pricing of BEV, MHEV and PHEV models; 2023 China NEV Export Outlook.</small></dd>
+    <dt>Oct 2022 &ndash; Feb 2024</dt><dd>Research Assistant, School of Mathematics and Physics, XJTLU<small>Stochastic processes, American option pricing, machine learning.</small></dd>
+    <dt>Aug &ndash; Oct 2023</dt><dd>Quant Intern, Kaiyuan Securities</dd>
+    <dt>Mar &ndash; Aug 2023</dt><dd>Data Analyst Intern, Volvo Group, Shanghai</dd>
+  </dl>
 
-  <section class="t s12" id="papers">
-    <div class="th"><h2>Papers</h2><span class="lbl">5 published · 2 working</span></div>
-    <div class="tbl-wrap">
-      <table class="hold">
-        <thead><tr><th>Year</th><th>Title · Venue</th><th>Status</th><th>Link</th></tr></thead>
-        <tbody>
-          <tr><td class="n">2026</td><td class="t">Too Much of a Good Thing: Characteristic Redundancy and Machine-Learning Portfolio Performance<span>with D. Jayasuriya, L. Xiao and X. Han · AFBC 2026</span></td><td><span class="pill w">Working</span></td><td class="n">—</td></tr>
-          <tr><td class="n">2026</td><td class="t">Machine learning predictive uncertainty and stock returns: Evidence from LightGBM entropy in the U.S. market<span>with D. Xie, W. Xiong and J. Zhang · Finance Research Letters, 110955</span></td><td><span class="pill p">Published</span></td><td><a href="https://doi.org/10.1016/j.frl.2026.110955" target="_blank" rel="noopener">DOI ↗</a></td></tr>
-          <tr><td class="n">2026</td><td class="t">Optimizing Stock Market Prediction and Stock Trading Strategies with Deep Learning Models Enhanced by Nonlinear Feature Identification and Robust Prediction Evaluation<span>Financial Innovation, 12, 117</span></td><td><span class="pill p">Published</span></td><td><a href="https://doi.org/10.1186/s40854-026-00929-6" target="_blank" rel="noopener">DOI ↗</a></td></tr>
-          <tr><td class="n">2026</td><td class="t">Information-aware Valuation and Dynamic Pricing for Textual Data in Mobile Environments<span>Information Processing and Management, 63(7), 104855</span></td><td><span class="pill p">Published</span></td><td><a href="https://doi.org/10.1016/j.ipm.2026.104855" target="_blank" rel="noopener">DOI ↗</a></td></tr>
-          <tr><td class="n">2026</td><td class="t">Can Ensemble Learning Reveal Real Estate Value – A Study of England and Wales Cases Anonymous<span>with Y. Ji and Y. Xu · Journal of Chinese Economic and Business Studies, 1–36</span></td><td><span class="pill p">Published</span></td><td><a href="https://doi.org/10.1080/14765284.2026.2722767" target="_blank" rel="noopener">DOI ↗</a></td></tr>
-          <tr><td class="n">2025</td><td class="t">Entropy-Regularized Portfolio Optimization with Reinforcement Learning Control<span>SSRN 5276183</span></td><td><span class="pill w">Working</span></td><td><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5276183" target="_blank" rel="noopener">SSRN ↗</a></td></tr>
-          <tr><td class="n">2024</td><td class="t">Optimal Profit-Making Strategies in Stock Market with Algorithmic Trading<span>Quantitative Finance and Economics, 8(3), 546</span></td><td><span class="pill p">Published</span></td><td class="n">AIMS</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+  <h3>Education</h3>
+  <dl class="dl">
+    <dt>2024 &ndash; 2027</dt><dd>PhD, Financial Engineering, University of Auckland</dd>
+    <dt>2022 &ndash; 2024</dt><dd>MSc, Financial Mathematics, Xi'an Jiaotong-Liverpool University</dd>
+    <dt>2018 &ndash; 2022</dt><dd>BSc, Finance, Chongqing Finance and Economics University</dd>
+  </dl>
 
-  <section class="t s12 ph-row" id="projects"><div class="th" style="margin:0"><h2>Selected projects</h2><a class="btn" href="https://github.com/Haoyu-tech?tab=repositories" target="_blank" rel="noopener">All 12 repositories ↗</a></div></section>
-  <a class="t pc llm-feature s12" id="llm-project" href="https://github.com/Haoyu-tech/FactorForge-LLM-Factor-generation" target="_blank" rel="noopener"><div class="llm-copy"><span class="llm-kicker">Featured research / LLM × Asset pricing</span><h3>FactorForge<br>From economic ideas to auditable factors.</h3><p>LLM-guided factor research across US equities, China A-shares and crypto perpetuals. Generate interpretable expressions, evaluate predictive diagnostics and build out-of-sample portfolios in a unified research workspace.</p><div class="chips"><span class="chip">LLM research</span><span class="chip">US · A-shares · Crypto</span><span class="chip">Auditable validation</span></div><span class="go">Explore FactorForge on GitHub ↗</span></div><div class="llm-pipeline" aria-label="Research workflow"><div class="llm-step"><span>01</span>Economic hypothesis</div><div class="llm-connector"></div><div class="llm-step"><span>02</span>Factor expression</div><div class="llm-connector"></div><div class="llm-step"><span>03</span>Evaluation &amp; portfolios</div><div class="llm-note">Human-readable ideas.<br>Traceable research artifacts.</div></div></a>
-<a class="t pc s4" href="https://github.com/Haoyu-tech/An-Avellaneda-Stoikov-market-making-research-project-built-on-real-Binance-Futures-BTCUSDT-L2-data." target="_blank" rel="noopener"><div class="pch"><div class="chips"><span class="chip">HF</span><span class="chip">Market making</span><span class="chip">L2</span></div><span class="star mono">★ 16</span></div><h3>Avellaneda–Stoikov market making on BTCUSDT L2</h3><p>A market-making research project built on real Binance Futures BTCUSDT level-2 order-book data.</p><span class="go">github.com/Haoyu-tech ↗</span></a>
-  <a class="t pc s4" href="https://github.com/Haoyu-tech/Hybrid-Reinforcement-Learning-with-an-Avellaneda--Stoikov-Backbone" target="_blank" rel="noopener"><div class="pch"><div class="chips"><span class="chip">HF</span><span class="chip">RL</span><span class="chip">Microstructure</span></div><span class="star mono">★ 6</span></div><h3>Hybrid RL with an Avellaneda–Stoikov backbone</h3><p>Order-book-aware high-frequency market making under non-stationary microstructure, with RL layered on an AS backbone.</p><span class="go">github.com/Haoyu-tech ↗</span></a>
-  <a class="t pc s4" href="https://github.com/Haoyu-tech/lob-replay" target="_blank" rel="noopener"><div class="pch"><div class="chips"><span class="chip">HF</span><span class="chip">L3 LOB</span></div></div><h3>LOB replay</h3><p>Replay tooling for BTC level-3 limit order book data.</p><span class="go">github.com/Haoyu-tech ↗</span></a>
-  <a class="t pc s6" href="https://github.com/Haoyu-tech/astock-alpha-factor-lab" target="_blank" rel="noopener"><div class="pch"><div class="chips"><span class="chip">Mid/low freq</span><span class="chip">A-share</span><span class="chip">LightGBM</span></div><span class="star mono">★ 1</span></div><h3>A-share alpha factor lab</h3><p>Alpha158 and GTJA-191 factor library with a walk-forward LightGBM stock-selection strategy on Tushare Pro data.</p><span class="go">github.com/Haoyu-tech ↗</span></a>
-  
-  <a class="t pc s6" href="https://github.com/Haoyu-tech/Momentum-is-all-you-need" target="_blank" rel="noopener"><div class="pch"><div class="chips"><span class="chip">Mid/low freq</span><span class="chip">US equities</span></div></div><h3>Momentum is all you need</h3><p>Momentum strategy research on S&amp;P 500 US stocks.</p><span class="go">github.com/Haoyu-tech ↗</span></a>
+  <h3>Teaching</h3>
+  <ul class="plain">
+    <li>Fintech, graduate teaching assistant <span>&middot; University of Auckland, 2025&ndash;</span></li>
+    <li>Calculus, teaching assistant <span>&middot; XJTLU, 2023</span></li>
+  </ul>
 
-  <section class="t s12" id="experience">
-    <div class="th"><h2>Career</h2><span class="lbl">2018 → 2027</span></div>
-    <div class="gantt-wrap"><svg id="gantt" viewBox="0 0 1000 300" role="img" aria-label="Gantt chart of education, research and industry positions from 2018 to 2027"></svg></div>
-    <div class="key">
-      <span><i style="background:var(--ink)"></i>Education</span>
-      <span><i style="background:var(--accent)"></i>Research</span>
-      <span><i style="background:var(--warm)"></i>Industry &amp; competition</span>
-      <span><i style="background:var(--accent-soft);outline:1px dashed var(--accent)"></i>Anticipated</span>
-    </div>
-  </section>
+  <h3>Other</h3>
+  <ul class="plain">
+    <li>Citadel Trading Invitational, Australia <span>&middot; 2025</span></li>
+    <li>XJTLU Entrance Scholarship <span>&middot; 2022</span></li>
+    <li>CMA Part 2 (Strategic Financial Management) passed; Securities Practitioner Qualifications, 3 modules <span>&middot; 2019</span>; NCRE Level II <span>&middot; 2019</span></li>
+  </ul>
+</section>
+</main>
 
-  <section class="t s7">
-    <div class="th"><h2>Experience</h2><span class="lbl">Most recent first</span></div>
-    <div class="xp">
-      <div class="xr"><div class="xw mono">12/2024 — now</div><div><h4>Financial Researcher <em>· Full-time</em></h4><div class="xo">University of Auckland · Auckland</div><p>Alpha discovery and factor mining; LLM-based automated research and strategy generation; reinforcement learning for HFT market microstructure.</p></div></div>
-      <div class="xr"><div class="xw mono">07/2025 — now</div><div><h4>Graduate Teaching Assistant</h4><div class="xo">University of Auckland · Fintech</div></div></div>
-      <div class="xr"><div class="xw mono">10/2025 — 12/2025</div><div><h4>Finance Analyst <em>· Contract</em></h4><div class="xo">Oxford Finance Limited · Auckland</div><p>Data analysis.</p></div></div>
-      <div class="xr"><div class="xw mono">01/2024 — 12/2024</div><div><h4>Research Assistant <em>· Contract</em></h4><div class="xo">Shenzhen Research Institute, The Chinese University of Hong Kong</div></div></div>
-      <div class="xr"><div class="xw mono">03/2024 — 05/2024</div><div><h4>Actuarial Intern</h4><div class="xo">Guohua Life Insurance Co., Ltd.</div><p>Asset-liability management.</p></div></div>
-      <div class="xr"><div class="xw mono">10/2023 — 02/2024</div><div><h4>Quantitative Research Intern <em>· IHS Automotive Planning Solution</em></h4><div class="xo">S&amp;P Global · Shanghai</div><p>Machine-learning pricing analysis of BEV, MHEV and PHEV models; published the 2023 China New Energy Vehicle (NEV) Export Outlook from data-driven modelling and market forecasts.</p></div></div>
-      <div class="xr"><div class="xw mono">10/2022 — 02/2024</div><div><h4>Research Assistant <em>· Contract</em></h4><div class="xo">Xi'an Jiaotong-Liverpool University · School of Mathematics and Physics</div><p>Calculus, stochastic processes, American option pricing; machine learning and data analysis.</p></div></div>
-      <div class="xr"><div class="xw mono">08/2023 — 10/2023</div><div><h4>Quant Intern</h4><div class="xo">Kaiyuan Securities</div></div></div>
-      <div class="xr"><div class="xw mono">03/2023 — 08/2023</div><div><h4>Data Analyst Intern</h4><div class="xo">Volvo Group · Shanghai</div><p>Market-dynamics and competitive-landscape reports for the sales department.</p></div></div>
-    </div>
-  </section>
-
-  <section class="t s5">
-    <div class="th"><h2>Education</h2></div>
-    <ul class="ls">
-      <li><b>PhD, Financial Engineering</b><span>University of Auckland · 2024–2027</span></li>
-      <li><b>MSc, Financial Mathematics</b><span>Xi'an Jiaotong-Liverpool University · 2022–2024</span></li>
-      <li><b>BSc, Finance</b><span>Chongqing Finance and Economics University · 2018–2022</span></li>
-    </ul>
-    <div class="lbl sub-h">Presentations &amp; competitions</div>
-    <ul class="ls">
-      <li id="conference"><b>39th AFBC, UNSW Sydney</b><span>Main program · Dec 2026</span></li>
-      <li><b>Citadel Trading Invitational</b><span>Australia · 2025</span></li>
-    </ul>
-    <div class="lbl sub-h">Teaching</div>
-    <ul class="ls">
-      <li><b>Graduate Teaching Assistant, Fintech</b><span>University of Auckland · 2025–now</span></li>
-      <li><b>Teaching Assistant, Calculus</b><span>XJTLU · 2023</span></li>
-    </ul>
-    <div class="lbl sub-h">Awards &amp; certifications</div>
-    <ul class="ls">
-      <li><b>XJTLU Entrance Scholarship</b><span>2022</span></li>
-      <li><b>CMA Part 2 passed</b><span>Strategic Financial Management</span></li>
-      <li><b>Securities Practitioner Qualifications</b><span>3 modules · 2019</span></li>
-      <li><b>NCRE Level II</b><span>2019</span></li>
-    </ul>
-  </section>
-
-  <footer><span>© 2026 Haoyu Wang</span><span>Strategy lab figures are simulated for illustration</span></footer>
-</div>
+<footer><span>Haoyu Wang, Auckland</span><span>Last updated November 2026</span></footer>
 </div>
 
 <script>
 (function(){
-  const root=document.documentElement,button=document.getElementById('theme-toggle');
-  let saved;try{saved=localStorage.getItem('haoyu-theme')}catch(e){}
-  function apply(mode){root.dataset.theme=mode;button.setAttribute('aria-label','Switch to '+(mode==='dark'?'light':'dark')+' theme');button.setAttribute('aria-pressed',String(mode==='dark'));}
+  var root=document.documentElement,b=document.getElementById('theme-toggle'),saved;
+  try{saved=localStorage.getItem('haoyu-theme')}catch(e){}
+  function apply(m){root.dataset.theme=m;b.textContent=m==='dark'?'Light':'Dark';b.setAttribute('aria-label','Switch to '+(m==='dark'?'light':'dark')+' mode')}
   apply(saved==='dark'||saved==='light'?saved:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
-  button.addEventListener('click',()=>{const next=root.dataset.theme==='dark'?'light':'dark';apply(next);try{localStorage.setItem('haoyu-theme',next)}catch(e){}});
+  b.addEventListener('click',function(){var n=root.dataset.theme==='dark'?'light':'dark';apply(n);try{localStorage.setItem('haoyu-theme',n)}catch(e){}});
 })();
 </script>
 <script>
 (function(){
-  /* ---------- Gantt ---------- */
-  const svg=document.getElementById('gantt'), NS='http://www.w3.org/2000/svg';
-  const x0=150,x1=980,y0=30,Y0=2018,Y1=2028;
-  const X=y=>x0+(x1-x0)*(y-Y0)/(Y1-Y0);
-  const lanes=[
-    {name:'EDUCATION',col:'var(--ink)',rows:[
-      [[2018.67,2022.5,'BSc Finance · CFEU']],
-      [[2022.67,2024.33,'MSc · XJTLU'],[2024.92,2026.8,'PhD Fin. Eng. · UoA'],[2026.8,2027.92,'',true]]]},
-    {name:'RESEARCH',col:'var(--accent)',rows:[
-      [[2022.75,2024.17,'RA · XJTLU'],[2024.92,2026.79,'Researcher · UoA']],
-      [[2024.0,2025.0,'RA · CUHK'],[2025.5,2026.79,'GTA · UoA']]]},
-    {name:'INDUSTRY',col:'var(--warm)',rows:[
-      [[2023.17,2023.67,'Volvo'],[2024.17,2024.42,'Guohua Life'],[2025.75,2026.0,'Oxford Finance']],
-      [[2023.58,2023.83,'Kaiyuan Sec.'],[2025.3,2025.45,'Citadel TI']],
-      [[2023.75,2024.17,'S&P Global']]]}
-  ];
-  const el=(t,a,txt)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(txt)e.textContent=txt;svg.appendChild(e);return e};
-  for(let y=Y0;y<=Y1;y++){el('line',{x1:X(y),x2:X(y),y1:y0-8,y2:285,class:'grid'});if(y<Y1)el('text',{x:X(y)+4,y:y0-12},String(y))}
-  const now=2026.79; el('line',{x1:X(now),x2:X(now),y1:y0-8,y2:285,class:'now'}); el('text',{x:X(now)+4,y:296,style:'fill:var(--warm)'},'now');
-  let y=y0; const rh=30, bh=20;
-  lanes.forEach(l=>{
-    el('text',{x:0,y:y+bh/2+rh/2+4,class:'lane'},l.name);
-    l.rows.forEach(r=>{
-      r.forEach(([a,b,lab,ant])=>{
-        const w=Math.max(6,X(b)-X(a));
-        if(ant){el('rect',{x:X(a),y:y+5,width:w,height:bh,rx:2,style:'fill:var(--accent-soft);stroke:var(--accent);stroke-dasharray:3 2'})}
-        else{el('rect',{x:X(a),y:y+5,width:w,height:bh,rx:2,style:`fill:${l.col};opacity:.9`})}
-        if(lab){const inside=w>lab.length*6.4+12;
-          const t=el('text',{x:inside?X(a)+7:X(b)+6,y:y+5+bh/2+4,class:'barlbl'},lab);
-          if(inside)t.setAttribute('style','fill:var(--paper)');}
-      });
-      y+=rh;
-    });
-    y+=10;
-  });
-
   /* ---------- Avellaneda–Stoikov demo ---------- */
   (function(){
     const cv=document.getElementById('px'),ctx=cv.getContext('2d');
@@ -747,15 +559,10 @@ footer{padding:14px 3px;font-size:10px;border-top:1px solid var(--rule);margin-t
   const btn=document.getElementById('copy');
   btn.addEventListener('click',()=>{
     const m=document.getElementById('mail');
-    const sel=()=>{const r=document.createRange();r.selectNodeContents(m);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Press Ctrl/Cmd+C'};
-    try{navigator.clipboard.writeText(m.textContent).then(()=>{btn.textContent='Copied';setTimeout(()=>btn.textContent='Copy email',1600)},sel)}catch(e){sel()}
+    const sel=()=>{const r=document.createRange();r.selectNodeContents(m);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='press Ctrl/Cmd+C'};
+    try{navigator.clipboard.writeText(m.textContent).then(()=>{btn.textContent='copied';setTimeout(()=>btn.textContent='copy',1600)},sel)}catch(e){sel()}
   });
 })();
 </script>
-<script src="tech-background.js?v=20261017c" defer></script>
-<script src="polish.js?v=20261118" defer></script>
 </body>
 </html>
-
-
-
