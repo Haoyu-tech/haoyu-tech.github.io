@@ -121,6 +121,21 @@ h3{font-size:16px;font-weight:600;margin:28px 0 10px;color:var(--muted);font-sty
 .wbar i{position:absolute;top:0;bottom:0}
 .as-eq{font-family:var(--mono);font-size:12px;color:var(--muted);margin:8px 0 0;overflow-x:auto;white-space:nowrap}
 
+/* career timeline */
+.tl-wrap{overflow-x:auto;margin:4px 0 0}
+#gantt{display:block;width:100%;min-width:620px;height:auto}
+#gantt text{font-family:var(--serif);font-size:12px;fill:var(--ink)}
+#gantt .yr{font-family:var(--mono);font-size:10.5px;fill:var(--muted)}
+#gantt .lane{font-size:12.5px;font-style:italic;fill:var(--muted)}
+#gantt .bl{font-size:11.5px}
+#gantt .g{stroke:var(--rule);stroke-width:1}
+#gantt .now{stroke:var(--neg);stroke-width:1;stroke-dasharray:2 3}
+#gantt .nowt{fill:var(--neg)}
+#gantt .ant{fill:none;stroke:var(--ink);stroke-dasharray:2 2}
+.tl-key{display:flex;gap:18px;flex-wrap:wrap;margin:6px 0 0;font-size:14px;color:var(--muted)}
+.tl-key i{display:inline-block;width:14px;height:8px;margin-right:6px;vertical-align:0}
+.tl-key i.ant{border:1px dashed var(--ink)}
+
 footer{margin-top:64px;padding-top:10px;border-top:1px solid var(--rule);font-size:14px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 @media (max-width:640px){
@@ -159,7 +174,7 @@ footer{margin-top:64px;padding-top:10px;border-top:1px solid var(--rule);font-si
   <div>
     <h1>Haoyu Wang</h1>
     <p class="pos">PhD student in Financial Engineering<br>Department of Accounting and Finance, University of Auckland</p>
-    <p>I work on empirical asset pricing and quantitative trading. Most of my research asks what machine-learning models actually pick up in the cross-section of stock returns, and when adding more firm characteristics stops helping. I also work on market making and inventory control with limit order book data, and on portfolio choice with reinforcement learning.</p>
+    <p>I work on empirical asset pricing and market microstructure. Most of my research asks what machine-learning models actually pick up in the cross-section of stock returns, and when adding more firm characteristics stops helping. I also work on market making and inventory control with limit order book data, and on portfolio choice with reinforcement learning.</p>
     <p>Before Auckland I worked at S&amp;P Global, Kaiyuan Securities and Volvo Group, and as a research assistant at CUHK (Shenzhen) and XJTLU.</p>
     <div class="contact">
       Email: <a class="mail" id="mail" href="mailto:haoyu.wang@auckland.ac.nz">haoyu.wang@auckland.ac.nz</a><button class="copy" id="copy" type="button">copy</button><br>
@@ -309,6 +324,48 @@ footer{margin-top:64px;padding-top:10px;border-top:1px solid var(--rule);font-si
 
 <section id="experience">
   <h2>Experience</h2>
+  <div class="tl-wrap"><svg id="gantt" viewBox="0 0 760 290" role="img" aria-label="Timeline of education, research and industry positions, 2018 to 2027"></svg></div>
+  <p class="tl-key"><span><i style="background:var(--ink)"></i>education</span><span><i style="background:var(--accent)"></i>research &amp; teaching</span><span><i style="background:var(--warm)"></i>industry &amp; competitions</span><span><i class="ant"></i>expected</span></p>
+  <script>
+  (function(){
+    var svg=document.getElementById('gantt'),NS='http://www.w3.org/2000/svg';
+    var x0=96,x1=752,top=26,Y0=2018,Y1=2028,NOW=2026.88;
+    var X=function(y){return x0+(x1-x0)*(y-Y0)/(Y1-Y0)};
+    var lanes=[
+      ['Education','var(--ink)',[
+        [[2018.67,2022.5,'BSc Finance, CFEU']],
+        [[2022.67,2024.33,'MSc, XJTLU'],[2024.92,NOW,'PhD, Auckland'],[NOW,2027.92,'',1]]]],
+      ['Research','var(--accent)',[
+        [[2022.75,2024.17,'RA, XJTLU'],[2024.92,NOW,'Researcher, Auckland']],
+        [[2024.0,2025.0,'RA, CUHK'],[2025.5,NOW,'GTA, Auckland']]]],
+      ['Industry','var(--warm)',[
+        [[2023.17,2023.67,'Volvo'],[2024.17,2024.42,'Guohua Life'],[2025.75,2026.0,'Oxford Finance']],
+        [[2023.58,2023.83,'Kaiyuan'],[2025.3,2025.45,'Citadel TI']],
+        [[2023.75,2024.17,'S&P Global']]]]
+    ];
+    function el(t,a,txt){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(txt)e.textContent=txt;svg.appendChild(e);return e}
+    var bottom=284;
+    for(var y=Y0;y<=Y1;y++){el('line',{x1:X(y),x2:X(y),y1:top-6,y2:bottom-8,'class':'g'});if(y<Y1)el('text',{x:X(y)+3,y:top-10,'class':'yr'},"'"+String(y).slice(2))}
+    el('line',{x1:X(NOW),x2:X(NOW),y1:top-6,y2:bottom-8,'class':'now'});
+    el('text',{x:X(NOW)+3,y:bottom,'class':'yr nowt'},'today');
+    var row=top,rh=24,bh=9;
+    lanes.forEach(function(l){
+      el('text',{x:0,y:row+14,'class':'lane'},l[0]);
+      l[2].forEach(function(r){
+        r.forEach(function(b){
+          var w=Math.max(4,X(b[1])-X(b[0]));
+          if(b[3])el('rect',{x:X(b[0]),y:row+4,width:w,height:bh,'class':'ant'});
+          else el('rect',{x:X(b[0]),y:row+4,width:w,height:bh,style:'fill:'+l[1]});
+          if(b[2])el('text',{x:X(b[0]),y:row+bh+16,'class':'bl'},b[2]);
+        });
+        row+=rh+6;
+      });
+      row+=6;
+    });
+    var w=svg.parentNode;w.scrollLeft=w.scrollWidth;
+  })();
+  </script>
+  <h3>Positions</h3>
   <dl class="dl">
     <dt>Dec 2024 &ndash; now</dt><dd>Financial Researcher, University of Auckland<small>Factor research, LLM-assisted research tooling, RL for market microstructure.</small></dd>
     <dt>Jul 2025 &ndash; now</dt><dd>Graduate Teaching Assistant (Fintech), University of Auckland</dd>
