@@ -41,7 +41,7 @@ Remote resources may require internet access.
 
 ## Hosting
 
-Publish the root HTML files as static assets. Confirm the configured Pages source and deployment URL: this repository is not named `Haoyu-tech.github.io`, so its name alone does not imply an account-level GitHub Pages address.
+Published with GitHub Pages from the `main` branch root at **https://haoyu-tech.github.io/**.
 
 ## Documentation
 
