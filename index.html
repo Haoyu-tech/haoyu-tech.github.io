@@ -87,11 +87,16 @@ main>section>h2+h3{margin-top:0}
 .plain{margin:0;padding-left:20px}
 .plain li{margin-bottom:8px}
 .plain li span{color:var(--muted)}
-.repos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 36px}
-.repos li{border-top:1px solid var(--rule);padding-top:8px}
+.repos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 36px}
+.repos li{margin:0}
+.repos figure{margin:0 0 10px;aspect-ratio:16/10;background:#fff;border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.repos figure img{display:block;width:100%;height:100%;object-fit:contain;transition:transform .3s}
+.repos li:hover figure img{transform:scale(1.03)}
 .repos a{font-weight:600;color:var(--ink);text-decoration-color:var(--rule)}
 .repos a:hover{color:var(--link);text-decoration-color:currentColor}
+.repos .fig{text-decoration:none}
 .repos span{display:block;color:var(--muted);font-size:15.5px;margin-top:2px}
+.also{margin:30px 0 0;font-size:15.5px;color:var(--muted)}
 
 /* demos */
 .lead{margin:0 0 18px;color:var(--muted);font-size:16px}
@@ -236,13 +241,22 @@ footer{margin-top:64px;padding-top:10px;border-top:1px solid var(--rule);font-si
   <h2>Code</h2>
   <p class="lead">Research code I have made public. The rest is on <a href="https://github.com/Haoyu-tech?tab=repositories">GitHub</a>.</p>
   <ul class="repos">
-    <li><a href="https://github.com/Haoyu-tech/FactorForge-LLM-Factor-generation">FactorForge</a> <span>LLM-guided factor research on US equities, China A-shares and crypto perpetuals: from an economic idea to a factor expression, diagnostics and out-of-sample portfolios.</span></li>
-    <li><a href="https://github.com/Haoyu-tech/An-Avellaneda-Stoikov-market-making-research-project-built-on-real-Binance-Futures-BTCUSDT-L2-data.">Avellaneda&ndash;Stoikov market making on BTCUSDT</a> <span>Built on real Binance Futures level-2 order book data.</span></li>
-    <li><a href="https://github.com/Haoyu-tech/Hybrid-Reinforcement-Learning-with-an-Avellaneda--Stoikov-Backbone">Hybrid RL with an Avellaneda&ndash;Stoikov backbone</a> <span>RL quoting on top of AS under non-stationary order flow.</span></li>
-    <li><a href="https://github.com/Haoyu-tech/lob-replay">lob-replay</a> <span>Replay tools for BTC level-3 order book data.</span></li>
-    <li><a href="https://github.com/Haoyu-tech/astock-alpha-factor-lab">A-share alpha factor lab</a> <span>Alpha158 and GTJA-191 factors with walk-forward LightGBM stock selection on Tushare data.</span></li>
-    <li><a href="https://github.com/Haoyu-tech/Momentum-is-all-you-need">Momentum is all you need</a> <span>Momentum on S&amp;P 500 stocks.</span></li>
+    <li><a class="fig" href="https://github.com/Haoyu-tech/FactorForge-LLM-Factor-generation" tabindex="-1" aria-hidden="true"><figure><img src="img/projects/factorforge.jpg" alt="FactorForge factor evaluation: decile returns and predictive statistics" loading="lazy"></figure></a>
+      <a href="https://github.com/Haoyu-tech/FactorForge-LLM-Factor-generation">FactorForge</a><span>LLM-powered factor research, evaluation and expanding-window backtesting for US equities, China A-shares and crypto perpetuals.</span></li>
+    <li><a class="fig" href="https://github.com/Haoyu-tech/crypto-hft-market-making" tabindex="-1" aria-hidden="true"><figure><img src="img/projects/crypto-hft.jpg" alt="Equity curve of a gated market maker on BNB" loading="lazy"></figure></a>
+      <a href="https://github.com/Haoyu-tech/crypto-hft-market-making">Crypto HFT market making</a><span>Market-making research on Binance order books: Avellaneda&ndash;Stoikov and GLFT quoting, HFT factors, deep LOB models, fill-probability ML and RL.</span></li>
+    <li><a class="fig" href="https://github.com/Haoyu-tech/reinforcement-learning-for-market-making-in-a-multi-agent-dealer-market" tabindex="-1" aria-hidden="true"><figure><img src="img/projects/rl-dealer.jpg" alt="Learned quote distributions against the analytical spread optimum" loading="lazy"></figure></a>
+      <a href="https://github.com/Haoyu-tech/reinforcement-learning-for-market-making-in-a-multi-agent-dealer-market">RL market makers in a dealer market</a><span>Reproduction of Ganesh et al. (2019), with the multi-agent dealer market calibrated to BTC order book depth.</span></li>
+    <li><a class="fig" href="https://github.com/Haoyu-tech/lob-replay" tabindex="-1" aria-hidden="true"><figure><img src="img/projects/lob-replay.jpg" alt="Depth heatmap and order queues from the L3 order book replay" loading="lazy"></figure></a>
+      <a href="https://github.com/Haoyu-tech/lob-replay">lob-replay</a><span>In-browser replay of a recorded CME BTC futures market-by-order (L3) limit order book.</span></li>
+    <li><a class="fig" href="https://github.com/Haoyu-tech/Momentum-is-all-you-need" tabindex="-1" aria-hidden="true"><figure><img src="img/projects/momentum.jpg" alt="Long-run growth of momentum portfolios and drawdowns" loading="lazy"></figure></a>
+      <a href="https://github.com/Haoyu-tech/Momentum-is-all-you-need">Momentum is all you need</a><span>Momentum on historical S&amp;P 500 members: 12-2 signal, portfolio breadth, volatility management and trading capacity.</span></li>
+    <li><a class="fig" href="https://github.com/Haoyu-tech/astock-alpha-factor-lab" tabindex="-1" aria-hidden="true"><figure><img src="img/projects/astock.jpg" alt="Out-of-sample LightGBM equity curves on CSI 1000" loading="lazy"></figure></a>
+      <a href="https://github.com/Haoyu-tech/astock-alpha-factor-lab">A-share alpha factor lab</a><span>Alpha158 and GTJA-191 factors with walk-forward LightGBM stock selection on Tushare Pro data.</span></li>
+    <li><a class="fig" href="https://github.com/Haoyu-tech/NZ-Energy-Pricing-Forecasting" tabindex="-1" aria-hidden="true"><figure><img src="img/projects/nz-energy.jpg" alt="Out-of-sample forecasts against actual NZEM prices" loading="lazy"></figure></a>
+      <a href="https://github.com/Haoyu-tech/NZ-Energy-Pricing-Forecasting">NZ electricity price forecasting</a><span>Half-hourly spot-price forecasting for the New Zealand Electricity Market using Electricity Authority EMI data.</span></li>
   </ul>
+  <p class="also">Also: <a href="https://github.com/Haoyu-tech/An-Avellaneda-Stoikov-market-making-research-project-built-on-real-Binance-Futures-BTCUSDT-L2-data.">Avellaneda&ndash;Stoikov on BTCUSDT L2</a>, <a href="https://github.com/Haoyu-tech/Replicate-Empirical-Asset-Pricing-via-Machine-Learning-2020-RFS">a Gu, Kelly and Xiu (2020) replication</a>, <a href="https://github.com/Haoyu-tech/GNN-in-asset-pricing">GNNs in asset pricing</a>.</p>
 </section>
 
 <section id="demos">
